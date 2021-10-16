@@ -8,19 +8,22 @@ const UserContacts = mongoose.Schema({
         type : String,
         required : true
     },
-    contact : {
-        firstName : {
-            type : String,
-            required : true
-        },
-        lastName : {
-            type : String
-        },
-        email : { 
-            type : String,
-            required : true
-        }
-    }
+    contact : [
+        { firstName : {type : String}, lastName : {type : String}, email : {type : String} }
+    ]
+    // contact : {
+    //     firstName : {
+    //         type : String,
+    //         required : true
+    //     },
+    //     lastName : {
+    //         type : String
+    //     },
+    //     email : { 
+    //         type : String,
+    //         required : true
+    //     }
+    // }
     
 }, {timestamps : true})
 

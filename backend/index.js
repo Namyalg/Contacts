@@ -37,6 +37,11 @@ app.get('/test', (req, res) => {
 const userRouter = require("./routes/UserRouter")
 app.use('/user', userRouter)
 
+const userContactRouter = require("./routes/UserContactRouter")
+app.use('/contact', userContactRouter)
+
+
+
 // const adminRouter = require("./routes/Admin")
 // app.use('/admin', adminRouter)
 

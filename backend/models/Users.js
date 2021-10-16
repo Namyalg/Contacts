@@ -12,18 +12,22 @@ const Users = mongoose.Schema({
     email : { 
         type : String,
         required : true
-    }
-    // contact : {
-    //     firstName : {
-    //         type : String,
-    //     },
-    //     lastName : {
-    //         type : String
-    //     },
-    //     email : { 
-    //         type : String,
-    //     }
-    // }
+    },
+    contacts : [
+        {
+            firstname : {
+                type : String,
+                required : true
+            },
+            lastname : {
+                type : String,
+            },
+            email : {
+                type : String,
+                required : true
+            }
+        }
+    ]
 }, {timestamp : true})
 
 //name and the model it needs to use
