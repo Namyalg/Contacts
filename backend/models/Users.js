@@ -1,9 +1,5 @@
 const mongoose = require('mongoose')
 
-
-//this is going to be the structure of th data stored in our collection
-
-//each document will look like this
 const Users = mongoose.Schema({
     name : {
         type : String,

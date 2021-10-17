@@ -45,7 +45,8 @@ app.use('/contact', userContactRouter)
 // const adminRouter = require("./routes/Admin")
 // app.use('/admin', adminRouter)
 
-app.listen(9001, function(){
-    console.log("server started on PORT 9001")
+var port = process.env.PORT || 9001
+app.listen(port, function(){
+    console.log("server started on PORT ", port)
 })
 
