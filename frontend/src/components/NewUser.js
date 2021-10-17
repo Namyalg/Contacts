@@ -3,6 +3,8 @@ import axios from 'axios'
 import { useState } from 'react'
 import { useHistory } from 'react-router-dom';
 import {Form, Button, Card} from 'react-bootstrap'
+const backend = process.env.REACT_APP_BACKEND
+console.log(backend)
 
 export default function NewUser(props) {
     var [email, setEmail] = useState("")
@@ -15,7 +17,9 @@ export default function NewUser(props) {
         }
         else{
             const newuser = { name : name, email : email };
-            axios.post('http://localhost:9001/user', newuser)
+            var URL = backend + "user"
+            axios.post(URL, newuser)
+            //axios.post('http://localhost:9001/user', newuser)
             .then(response => {
                 if(response.data.status === 1){
                     alert("Succesful sign up! Go ahead and save your contacts!")
@@ -31,17 +35,6 @@ export default function NewUser(props) {
     }
 
     return (
-        // <div>
-        //     <div style={{textAlign : "center"}}>
-        //         <h1>Create a document for yourself</h1>
-        //         Name : <input value={name} onChange={e => setName(e.target.value)} type="text"/>
-        //         <br></br>
-        //         Email : <input value={email} onChange={e => setEmail(e.target.value)} type="text"/>
-        //         <br></br>
-        //         <br></br>
-        //         <button onClick={addUser}>Create an account</button>
-        //     </div>
-        // </div>
         <div>
             <div style={{textAlign : "center"}}>
                 <Card style={{backgroundColor:"#e6f3f5"}}>

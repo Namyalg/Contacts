@@ -7,6 +7,7 @@ import {AiFillDelete, AiTwotoneMail} from 'react-icons/ai'
 import Modal from "react-modal";
 import Navigation from './Navigation'
 import {Form, Button} from 'react-bootstrap'
+const backend = process.env.REACT_APP_BACKEND
 
 Modal.setAppElement("#root");
 
@@ -27,7 +28,9 @@ export default function ListContact() {
             window.location.replace("/")
         }
         else{
-            axios.post("http://localhost:9001/contact/list", {name : localStorage.getItem('uname'), email : localStorage.getItem('uemail')})
+            var URL = backend + "contact/list"
+            axios.post(URL, {name : localStorage.getItem('uname'), email : localStorage.getItem('uemail')})
+            //axios.post("http://localhost:9001/contact/list", {name : localStorage.getItem('uname'), email : localStorage.getItem('uemail')})
             .then((response) => {
                 setContact(response.data.contacts.contacts)
                 setObj(response.data.contacts)
@@ -107,7 +110,9 @@ export default function ListContact() {
                                                                     alert("Please fill in first name and email")
                                                                 }
                                                                 else{
-                                                                    axios.post("http://localhost:9001/contact/update", content)
+                                                                    var URL = backend + "contact/update"
+                                                                    //axios.post("http://localhost:9001/contact/update", content)
+                                                                    axios.post(URL, content)
                                                                     .then((response) => {
                                                                         if(response.data.status == 1){
                                                                             window.location.reload()
@@ -127,7 +132,9 @@ export default function ListContact() {
                                         <td><Button variant="outline-dark" onClick={() => {
                                             if(window.confirm("Do you want to delete this record ?")){
                                                 var dlt = {objId : obj._id , contactId : item._id}
-                                                axios.post("http://localhost:9001/contact/delete", dlt)
+                                                var URL = backend + "contact/delete"
+                                                axios.post(URL, dlt)
+                                                //axios.post("http://localhost:9001/contact/delete", dlt)
                                                 .then((response) => {
                                                     if(response.data.status == 1){
                                                         alert("Succesful delete")

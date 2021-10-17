@@ -5,6 +5,8 @@ import Navigation from './Navigation'
 import background from '../assets/back.png'
 import {AiFillDelete, AiTwotoneMail} from 'react-icons/ai'
 import {Form, Button} from 'react-bootstrap'
+const backend = process.env.REACT_APP_BACKEND
+
 
 export default function AddContact() {
     var [email, setEmail] = useState("")
@@ -26,7 +28,9 @@ export default function AddContact() {
         }
         else{
             var contact = {uname : uname, uemail : uemail, firstname : firstname, lastname : lastname, email : email}
-            axios.post("http://localhost:9001/contact/add", contact)
+            var URL = backend + "contact/add"
+            //axios.post("http://localhost:9001/contact/add", contact)
+            axios.post(URL, contact)
             .then((response) => {
                 console.log(response);
                 if(response.data.status == 1){
