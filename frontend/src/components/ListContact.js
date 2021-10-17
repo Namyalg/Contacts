@@ -31,7 +31,7 @@ export default function ListContact() {
         else{
             var URL = backend + "contact/list"
             //axios.post(URL, {name : localStorage.getItem('uname'), email : localStorage.getItem('uemail')})
-            axios.post("http://localhost:9001/contact/list", {name : localStorage.getItem('uname'), email : localStorage.getItem('uemail')})
+            axios.get("http://localhost:9001/contact/list/" + localStorage.getItem('uname') + "/" + localStorage.getItem('uemail'))
             .then((response) => {
                 setContact(response.data.contacts.contacts)
                 setObj(response.data.contacts)
@@ -44,11 +44,10 @@ export default function ListContact() {
         width:'100%',
         height : '650px',
         backgroundRepeat: 'no-repeat',
-        overflow : 'hidden',
+        overflowX : 'hidden',
+        overflowY : 'auto',
         margin : 'auto'
     }
-
-    
 
     const tableStyle = {
         marginLeft : '-10%'
@@ -90,7 +89,7 @@ export default function ListContact() {
                                             <td>{item.email}</td>
                                             {/* <td><Button variant="outline-dark" onClick={toggleModal}><FaEdit size={20}/></Button> */}
                                             <td><Button variant="outline-dark" onClick={() => {
-                                                alert(item._id)
+                                                //alert(item._id)
                                                 setTargetId(item._id)
                                                 toggleModal()
                                             }}><FaEdit size={20}/></Button>
@@ -111,7 +110,7 @@ export default function ListContact() {
                                                             <Form.Control style={{width : '80%', margin : 'auto'}} size="lg" type="email" placeholder="Enter Email" value={email} onChange={e => setEmail(e.target.value)}/>
                                                             <br></br>
                                                             <Button variant="outline-dark" onClick={() => {
-                                                                alert(targetId)
+                                                                //alert(targetId)
                                                                 var content = {objId : obj._id , contactId : targetId, firstname : firstname, lastname : lastname, email : email}
                                                                 if(firstname === "" || email === ""){
                                                                     alert("Please fill in first name and email")
@@ -126,8 +125,6 @@ export default function ListContact() {
                                                                             toggleModal()
                                                                         }
                                                                         else{
-                                                                            console.log("wrong")
-                                                                            console.log(response.data)
                                                                             alert("There was an error updating, try again :(")
                                                                         }
                                                                     })

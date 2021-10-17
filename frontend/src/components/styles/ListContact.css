@@ -5,5 +5,8 @@ th, td, tr, table {
     padding-bottom : 15px;
     border: 1px solid black;
     text-align: center;
-    overflow: -moz-hidden-unscrollable;
+ 
+}
+table {
+    overflow: scroll;
 }
