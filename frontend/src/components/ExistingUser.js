@@ -21,8 +21,8 @@ export default function ExistingUser(props) {
         else{
             const newuser = { name : name, email : email };
             var URL = backend + "user/login"
-            //axios.post(URL, newuser)
-            axios.post('http://localhost:9001/user/login', newuser)
+            axios.post(URL, newuser)
+            //axios.post('http://localhost:9001/user/login', newuser)
             .then(response => {
                 console.log(response.data);
                 if(response.data.status === 1){

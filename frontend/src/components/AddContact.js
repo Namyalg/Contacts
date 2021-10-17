@@ -29,8 +29,8 @@ export default function AddContact() {
         else{
             var contact = {uname : uname, uemail : uemail, firstname : firstname, lastname : lastname, email : email}
             var URL = backend + "contact/add"
-            axios.post("http://localhost:9001/contact/add", contact)
-            //axios.post(URL, contact)
+            //axios.post("http://localhost:9001/contact/add", contact)
+            axios.post(URL, contact)
             .then((response) => {
                 console.log(response);
                 if(response.data.status == 1){
