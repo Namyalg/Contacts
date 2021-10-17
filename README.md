@@ -7,9 +7,9 @@ The steps to use the application are :
 - Add email contacts
 - View a list of email contacts, modify or delete them
 
-The ![MERN](./assets/mern.png?raw=true "MERN") stack has been used to build this application
+The <img src="./assets/mern.png" width="40" height="40"/> stack has been used to build this application
 
 
 The entire process can be represented as 
 
-<img src="./assets/process.gif"/>
+<img src="./assets/process.gif" width="200" height="200"/>
