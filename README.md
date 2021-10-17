@@ -9,7 +9,20 @@ The steps to use the application are :
 
 The <img src="./assets/mern.png" width="40" height="40"/> stack has been used to build this application
 
+### Screenshots
+
+The landing page has an option to sign-up or login
+
+<img src="./assets/landing.PNG"/>
+
+On succesful login, the user is redirected to the add contacts page
+
+<img src="./assets/add_contact.PNG"/>
+
+The contact list page has options to modify or delete records
+
+<img src="./assets/list.PNG"/>
 
 The entire process can be represented as 
 
-<img src="./assets/process.gif" width="200" height="200"/>
+<video src="./assets/video.mp4"/>
