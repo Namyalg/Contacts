@@ -26,19 +26,14 @@ router.post("/add", async (req, res) => {
                 var newContact = {firstname : req.body.firstname, lastname : req.body.lastname, email : req.body.email}
                 allContacts.push(newContact)
                 user.findOneAndUpdate({_id : obj._id}, {contacts : allContacts}, {upsert : false}, function(err, res){
-                    // console.log(err, res);
-                    // console.log(res._id, obj._id)
-                    // check = res.matchedCount
-                    // if(res._id == obj._id){
-                    //     console.log("the correct one is matched")  
-                    // }
+               
                 })
             }
         }
         res.json({status : 1})
     }
     catch(err){
-        res.json({status : 1})
+        res.json({status : 0})
     }
 })
 
