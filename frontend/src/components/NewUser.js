@@ -18,8 +18,8 @@ export default function NewUser(props) {
         else{
             const newuser = { name : name, email : email };
             var URL = backend + "user"
-            axios.post(URL, newuser)
-            //axios.post('http://localhost:9001/user', newuser)
+            //axios.post(URL, newuser)
+            axios.post('http://localhost:9001/user/signin', newuser)
             .then(response => {
                 if(response.data.status === 1){
                     alert("Succesful sign up! Go ahead and save your contacts!")

@@ -18,6 +18,7 @@ export default function ListContact() {
     var [email, setEmail] = useState("")
     var [firstname, setFirstName] = useState("")
     var [lastname, setLastName] = useState("")
+    var [targetId, setTargetId] = useState(null)
 
     function toggleModal() {
       setIsOpen(!isOpen);
@@ -29,8 +30,8 @@ export default function ListContact() {
         }
         else{
             var URL = backend + "contact/list"
-            axios.post(URL, {name : localStorage.getItem('uname'), email : localStorage.getItem('uemail')})
-            //axios.post("http://localhost:9001/contact/list", {name : localStorage.getItem('uname'), email : localStorage.getItem('uemail')})
+            //axios.post(URL, {name : localStorage.getItem('uname'), email : localStorage.getItem('uemail')})
+            axios.post("http://localhost:9001/contact/list", {name : localStorage.getItem('uname'), email : localStorage.getItem('uemail')})
             .then((response) => {
                 setContact(response.data.contacts.contacts)
                 setObj(response.data.contacts)
@@ -83,11 +84,16 @@ export default function ListContact() {
                              {
                                 contacts !== null ?
                                     contacts.map((item) => (
-                                        <tr key={item.id}>
+                                        <tr key={item._id}>
                                             <td>{item.firstname}</td>
                                             <td>{item.lastname}</td>
                                             <td>{item.email}</td>
-                                            <td><Button variant="outline-dark" onClick={toggleModal}><FaEdit size={20}/></Button>
+                                            {/* <td><Button variant="outline-dark" onClick={toggleModal}><FaEdit size={20}/></Button> */}
+                                            <td><Button variant="outline-dark" onClick={() => {
+                                                alert(item._id)
+                                                setTargetId(item._id)
+                                                toggleModal()
+                                            }}><FaEdit size={20}/></Button>
                                                 <Modal
                                                     style={customStyles}
                                                     isOpen={isOpen}
@@ -105,20 +111,23 @@ export default function ListContact() {
                                                             <Form.Control style={{width : '80%', margin : 'auto'}} size="lg" type="email" placeholder="Enter Email" value={email} onChange={e => setEmail(e.target.value)}/>
                                                             <br></br>
                                                             <Button variant="outline-dark" onClick={() => {
-                                                                var content = {objId : obj._id , contactId : item._id, firstname : firstname, lastname : lastname, email : email}
+                                                                alert(targetId)
+                                                                var content = {objId : obj._id , contactId : targetId, firstname : firstname, lastname : lastname, email : email}
                                                                 if(firstname === "" || email === ""){
                                                                     alert("Please fill in first name and email")
                                                                 }
                                                                 else{
                                                                     var URL = backend + "contact/update"
-                                                                    //axios.post("http://localhost:9001/contact/update", content)
-                                                                    axios.post(URL, content)
+                                                                    axios.put("http://localhost:9001/contact/update", content)
+                                                                    //axios.post(URL, content)
                                                                     .then((response) => {
                                                                         if(response.data.status == 1){
                                                                             window.location.reload()
                                                                             toggleModal()
                                                                         }
                                                                         else{
+                                                                            console.log("wrong")
+                                                                            console.log(response.data)
                                                                             alert("There was an error updating, try again :(")
                                                                         }
                                                                     })
@@ -133,8 +142,7 @@ export default function ListContact() {
                                             if(window.confirm("Do you want to delete this record ?")){
                                                 var dlt = {objId : obj._id , contactId : item._id}
                                                 var URL = backend + "contact/delete"
-                                                axios.post(URL, dlt)
-                                                //axios.post("http://localhost:9001/contact/delete", dlt)
+                                                axios.delete("http://localhost:9001/contact/delete/" + obj._id + "/" + item._id)
                                                 .then((response) => {
                                                     if(response.data.status == 1){
                                                         alert("Succesful delete")

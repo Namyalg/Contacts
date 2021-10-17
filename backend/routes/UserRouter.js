@@ -35,7 +35,7 @@ router.post("/login", async (req, res) => {
 })
 
 
-router.post("/", async (req, res) => {
+router.post("/signin", async (req, res) => {
     var userObject = new user({
         email : req.body.email,
         name : req.body.name

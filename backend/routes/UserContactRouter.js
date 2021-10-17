@@ -37,12 +37,11 @@ router.post("/add", async (req, res) => {
     }
 })
 
-router.post("/list", async (req, res) => {
+router.get("/list/:name/:email", async (req, res) => {
     try{
         var allUsers = await user.find()
         var flag = false;
         for(obj of allUsers){
-            console.log(obj)
             if(obj.name == req.body.name && obj.email == req.body.email){
                 flag = true
                 res.json({status : 1, contacts : obj})
@@ -57,14 +56,11 @@ router.post("/list", async (req, res) => {
     }
 })
 
-router.post("/delete", async (req, res) => {
-    console.log("from the delete thing")
-    console.log(req.body.objId);
-    console.log(req.body.contactId);
-    var objId = req.body.objId 
-    var contactId = req.body.contactId 
+router.delete("/delete/:objId/:contactId", async (req, res) => {
+    var objId = req.params.objId 
+    var contactId = req.params.contactId 
     //pull is used to remove a document with a specified id
-    user.findOneAndUpdate({ _id : objId},
+    user.updateOne({ _id : objId},
     { $pull: { "contacts" : { _id : contactId } } }, (err) => {
         if (err) {
             res.status(404).json({ status : 0 });
@@ -76,22 +72,27 @@ router.post("/delete", async (req, res) => {
 );
 })
 
-
-router.post("/update", async (req, res) => {
+router.put("/update", async (req, res) => {
+    
     var objId = req.body.objId 
     var contactId = req.body.contactId
     var fname =  req.body.firstname 
     var lname = req.body.lastname 
     var email = req.body.email
-
+    console.log("wdwijwwfwnf")
+    console.log("obj id ", objId)
+    console.log("cntact id is ", contactId)
     //update one entry with that document id
-    user.findOneAndUpdate(
+    //user.findOneAndUpdate(
+    user.updateOne(
+        // {_id : objId},
         { 'contacts._id': contactId },
         { $set:  { 'contacts.$.firstname': fname, 'contacts.$.lastname': lname, 'contacts.$.email': email }},
         (err, result) => {
           if (err) {
-            res.status(500)
-            .json({ error: 'Unable to update contacts.', status : 0});
+            // res.status(500)
+            console.log(err)
+            res.json({ error: 'Unable to update contacts.', status : 0, message : err});
           } else {
             res.status(200)
             .json({status : 1});
