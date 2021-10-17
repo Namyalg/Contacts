@@ -29,9 +29,9 @@ export default function ListContact() {
             window.location.replace("/")
         }
         else{
-            var URL = backend + "contact/list"
-            //axios.post(URL, {name : localStorage.getItem('uname'), email : localStorage.getItem('uemail')})
-            axios.get("http://localhost:9001/contact/list/" + localStorage.getItem('uname') + "/" + localStorage.getItem('uemail'))
+            var URL = backend + "contact/list/" + localStorage.getItem('uname') + "/" + localStorage.getItem('uemail')
+            axios.get(URL)
+            //axios.get("http://localhost:9001/contact/list/" + localStorage.getItem('uname') + "/" + localStorage.getItem('uemail'))
             .then((response) => {
                 setContact(response.data.contacts.contacts)
                 setObj(response.data.contacts)
@@ -118,8 +118,8 @@ export default function ListContact() {
                                                                 }
                                                                 else{
                                                                     var URL = backend + "contact/update"
-                                                                    axios.put("http://localhost:9001/contact/update", content)
-                                                                    //axios.post(URL, content)
+                                                                    //axios.put("http://localhost:9001/contact/update", content)
+                                                                    axios.put(URL, content)
                                                                     .then((response) => {
                                                                         if(response.data.status == 1){
                                                                             window.location.reload()
@@ -139,11 +139,12 @@ export default function ListContact() {
                                         <td><Button variant="outline-dark" onClick={() => {
                                             if(window.confirm("Do you want to delete this record ?")){
                                                 var dlt = {objId : obj._id , contactId : item._id}
-                                                var URL = backend + "contact/delete"
-                                                axios.delete("http://localhost:9001/contact/delete/" + obj._id + "/" + item._id)
+                                                var URL = backend + "contact/delete/" + obj._id + "/" + item._id
+                                                axios.delete(URL)
+                                                //axios.delete("http://localhost:9001/contact/delete/" + obj._id + "/" + item._id)
                                                 .then((response) => {
                                                     if(response.data.status == 1){
-                                                        alert("Succesful delete")
+                                                        //alert("Succesful delete")
                                                         window.location.reload()
                                                     }
                                                     else{

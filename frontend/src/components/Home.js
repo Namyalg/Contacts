@@ -21,7 +21,7 @@ export default function Home(props) {
         <div style={backdrop}>
             <Navbar bg="dark" variant="dark" expand="lg" sticky="top">
                 <Container>
-                    <Navbar.Brand><AiOutlineMail size={50} style={{paddingRight : '10px'}}/>Contact-o-mail</Navbar.Brand>
+                    <Navbar.Brand><AiOutlineMail size={50} style={{paddingRight : '10px'}}/>Contact-o-email</Navbar.Brand>
                 </Container>
             </Navbar>
             <br></br> 
