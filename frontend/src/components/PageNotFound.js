@@ -1,5 +1,5 @@
 import React from 'react'
-import background from './back.png'
+import background from '../assets/back.png'
 import "./styles/PageNotFound.css"
 
 export default function PageNotFound() {

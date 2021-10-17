@@ -2,16 +2,12 @@ import React from 'react'
 import {useState} from 'react'
 import NewUser from './NewUser'
 import ExistingUser from './ExistingUser';
-import background from './back.png'
+import background from '../assets/back.png'
 import { Navbar, Container, Button} from 'react-bootstrap';
 import {AiTwotoneMail , AiOutlineMail} from 'react-icons/ai'
 
 export default function Home(props) {
     var [type, setType] = useState(null);
-    const nextPath = (path) => {
-        props.history.push(path)
-    }
-
     const backdrop = {
         backgroundImage: `url(${background})`,
         width:'100%',
@@ -23,7 +19,7 @@ export default function Home(props) {
 
     return (
         <div style={backdrop}>
-             <Navbar bg="dark" variant="dark" expand="lg" sticky="top">
+            <Navbar bg="dark" variant="dark" expand="lg" sticky="top">
                 <Container>
                     <Navbar.Brand><AiOutlineMail size={50} style={{paddingRight : '10px'}}/>Contact-o-mail</Navbar.Brand>
                 </Container>

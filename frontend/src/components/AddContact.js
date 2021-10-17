@@ -2,22 +2,17 @@ import React, { Component } from 'react'
 import { useState, useEffect, useHistory } from 'react'
 import axios from 'axios'
 import Navigation from './Navigation'
-import background from './back.png'
+import background from '../assets/back.png'
 import {AiFillDelete, AiTwotoneMail} from 'react-icons/ai'
 import {Form, Button} from 'react-bootstrap'
 
 export default function AddContact() {
-    //will also check for redundancies here, so if it already is there say is present
-    //try to integrate email js to it
     var [email, setEmail] = useState("")
     var [firstname, setFirstName] = useState("")
     var [lastname, setLastName] = useState("")
 
     useEffect(() => {
-        
-        //alert(localStorage.getItem('uname') === "")
         if(localStorage.getItem('uname')  === "" || localStorage.getItem('uemail')  === ""){
-            //redirectPath()
             window.location.replace("/")
         }
     }, []);
@@ -53,7 +48,6 @@ export default function AddContact() {
         overflow : 'hidden',
         margin : 'auto'
     }
-
 
     return (
          <div style={backdrop}>

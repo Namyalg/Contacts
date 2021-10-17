@@ -28,11 +28,10 @@ export default function ExistingUser(props) {
                     redirectPath()
                 }
                 else{
-                    alert("An error occured, try again :(")
+                    alert("An error occured, enter the correct details :(")
                 }
             });
         }
-        
     }
 
     return (
