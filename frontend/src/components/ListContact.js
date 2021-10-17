@@ -57,8 +57,6 @@ export default function ListContact() {
         content: {
           top: '40%',
           left: '50%',
-        //   right: 'auto',
-        //   bottom: 'auto',
           transform: 'translate(-50%, -50%)',
         },
     };
