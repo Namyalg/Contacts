@@ -1,11 +1,17 @@
 # Frontend
 
-- The frontend of the application is hosted here, it is built of React JS
+- The frontend of the application is hosted here, it is built on React JS
 
 ### Steps to setup
 - Clone the repository
 - Run `npm install` to install `node_modules` and dependencies
 - Run `npm start` to setup the application on `http://localhost:3000`
+
+
+### Modules used
+- Functional components have been used
+- React bootstrap has been used for components such as Forms, Cards, Modals and Buttons
+- React Icons has been used
 
 <!-- This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
