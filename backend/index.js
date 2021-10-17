@@ -19,19 +19,14 @@ mongoose.connect(uri, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 }).then(() => {
-    console.log("connection to DB is successfull")
+    console.log("connection to the database is successful")
 }).catch((err) => {
     console.log("error is" + err)
 })
 
-/***************************************************************/
-//here lets look at the routers part of it
-//app.get -> to get
-//app.post -> to add essentially
-//app.delete -> to dlt
 
 app.get('/test', (req, res) => {
-    res.send("Tests is succesful right")
+    res.json({message : "This is a test route"})
 })
 
 const userRouter = require("./routes/UserRouter")
@@ -40,10 +35,6 @@ app.use('/user', userRouter)
 const userContactRouter = require("./routes/UserContactRouter")
 app.use('/contact', userContactRouter)
 
-
-
-// const adminRouter = require("./routes/Admin")
-// app.use('/admin', adminRouter)
 
 var port = process.env.PORT || 9001
 app.listen(port, function(){
