@@ -1,6 +1,9 @@
 
-th, td {
-    padding: 25px;
-    text-align : left;
-    margin-left : 230px
+th, td, tr, table {
+    border-collapse: collapse;
+    padding-top : 15px;
+    padding-bottom : 15px;
+    border: 1px solid black;
+    text-align: center;
+    overflow: -moz-hidden-unscrollable;
 }

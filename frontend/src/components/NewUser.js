@@ -1,9 +1,8 @@
 import React from 'react'
 import { useState } from 'react'
 import axios from 'axios'
-
+import background from './back.png'
 //here only a post request is made to the database, need to cross check once
-
 
 export default function NewUser(props) {
     var [email, setEmail] = useState("")
@@ -11,6 +10,15 @@ export default function NewUser(props) {
 
     const nextPath = (path) => {
         props.history.push(path)
+    }
+
+    const backdrop = {
+        backgroundImage: `url(${background})`,
+        width:'100%',
+        height : '650px',
+        backgroundRepeat: 'no-repeat',
+        overflow : 'hidden',
+        margin : 'auto'
     }
 
     const addUser = async () => {
@@ -26,6 +34,8 @@ export default function NewUser(props) {
             .then(response => {
                 if(response.data.status === 1){
                     alert("Succesful sign up! Go ahead and save your contacts!")
+                    localStorage.setItem('uname', name)
+                    localStorage.setItem('uemail', email)
                     window.location.replace("/add")
                 }
                 else{

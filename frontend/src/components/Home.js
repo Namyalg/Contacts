@@ -2,6 +2,7 @@ import React from 'react'
 import {useState} from 'react'
 import NewUser from './NewUser'
 import ExistingUser from './ExistingUser';
+import background from './back.png'
 
 export default function Home(props) {
     //here false indicates it is a new user, set by default, if the existing user button is clicked value becomes true
@@ -14,8 +15,17 @@ export default function Home(props) {
         props.history.push(path)
     }
 
+    const backdrop = {
+        backgroundImage: `url(${background})`,
+        width:'100%',
+        height : '650px',
+        backgroundRepeat: 'no-repeat',
+        overflow : 'hidden',
+        margin : 'auto'
+    }
+    
     return (
-        <div>
+        <div style={backdrop}>
             <h1>Save all your contacts here!</h1>
             <button onClick={e => setType(false)}>New User</button>
             <button onClick={e => setType(true)}>Existing User</button>

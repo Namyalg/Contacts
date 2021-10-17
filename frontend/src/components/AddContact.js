@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
 import { useState, useEffect, useHistory } from 'react'
 import axios from 'axios'
-
+import Navigation from './Navigation'
+import background from './back.png'
+import {AiFillDelete, AiTwotoneMail} from 'react-icons/ai'
+import {Form, Button} from 'react-bootstrap'
 
 export default function AddContact() {
     //will also check for redundancies here, so if it already is there say is present
@@ -11,7 +14,9 @@ export default function AddContact() {
     var [lastname, setLastName] = useState("")
 
     useEffect(() => {
-        if(localStorage.getItem('uname') == null || localStorage.getItem('uemail') == null){
+        
+        //alert(localStorage.getItem('uname') === "")
+        if(localStorage.getItem('uname')  === "" || localStorage.getItem('uemail')  === ""){
             //redirectPath()
             window.location.replace("/")
         }
@@ -20,6 +25,7 @@ export default function AddContact() {
     const addUserContact = async () => {
         var uname = localStorage.getItem('uname')
         var uemail = localStorage.getItem('uemail')
+       
         if(firstname == "" || email == ""){
             alert("Please fill in your contact's email and firstname")
         }
@@ -30,6 +36,7 @@ export default function AddContact() {
                 console.log(response);
                 if(response.data.status == 1){
                     alert("New contact saved succesfully!")
+                    window.location.reload()
                 }
                 else{
                     alert("There was an issue, try again :(")
@@ -38,23 +45,49 @@ export default function AddContact() {
         } 
     }
 
+    const backdrop = {
+        backgroundImage: `url(${background})`,
+        width:'100%',
+        height : '650px',
+        backgroundRepeat: 'no-repeat',
+        overflow : 'hidden',
+        margin : 'auto'
+    }
 
 
     return (
-        <div>
-            <h1>Welcome {localStorage.getItem('uname')}</h1>
-            <h1>Add a new contact here!</h1>
+         <div style={backdrop}>
+            <Navigation/>
             <br></br>
+            <br></br>
+            <h1>Add a new contact here <AiTwotoneMail size={60} style={{paddingLeft : '20px'}}/></h1>
             <br></br>
             <h3>Enter the details of your contact</h3>
-            First Name : <input value={firstname} onChange={e => setFirstName(e.target.value)} type="text"/>
             <br></br>
+            <Form>
+                <Form.Group className="mb-3">
+                    <Form.Control style={{width : '50%', margin : 'auto'}} size="lg" type="text" placeholder="Enter First Name" value={firstname} onChange={e => setFirstName(e.target.value)}/>
+                    <br></br>
+                    <br></br>
+                    <Form.Control style={{width : '50%', margin : 'auto'}} size="lg" type="text" placeholder="Enter Last Name" value={lastname} onChange={e => setLastName(e.target.value)}/>
+                    <br></br>
+                    <br></br>
+                    <Form.Control style={{width : '50%', margin : 'auto'}} size="lg" type="email" placeholder="Enter Email" value={email} onChange={e => setEmail(e.target.value)}/>
+                    <br></br>
+                    <br></br>
+                    <Button className="mb-2" onClick={addUserContact}>Add Contact</Button>
+                </Form.Group>
+            </Form>
+            
+            {/* First Name : <input value={firstname} onChange={e => setFirstName(e.target.value)} type="text"/>
+            
             Last Name : <input value={lastname} onChange={e => setLastName(e.target.value)} type="text"/>
+            <br></br>
             <br></br>
             Email : <input value={email} onChange={e => setEmail(e.target.value)} type="text"/>
             <br></br>
-            <br></br>
-            <button onClick={addUserContact}>Add</button>
+            <br></br> */}
+            {/* <button onClick={addUserContact}>Add</button> */}
         </div>
     )
 }
