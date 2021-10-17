@@ -80,7 +80,7 @@ export default function ListContact() {
        <div style={backdrop}>
            <Navigation/>
             <div style={tableStyle}>
-                <h1>Here is your contact list <AiTwotoneMail size={60} style={{paddingLeft : '20px'}}/></h1>
+                <h1>Contact list <AiTwotoneMail size={60} style={{paddingLeft : '20px'}}/></h1>
                     <table style={{marginLeft : '19%', width : '70%'}}>
                         <thead>
                             <tr>
