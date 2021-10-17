@@ -3,15 +3,11 @@ import {useState} from 'react'
 import NewUser from './NewUser'
 import ExistingUser from './ExistingUser';
 import background from './back.png'
-import { Navbar, Nav } from 'react-bootstrap';
+import { Navbar, Container, Button} from 'react-bootstrap';
+import {AiTwotoneMail , AiOutlineMail} from 'react-icons/ai'
 
 export default function Home(props) {
-    //here false indicates it is a new user, set by default, if the existing user button is clicked value becomes true
     var [type, setType] = useState(false);
-    //need to have a enter username and password field and then check, if it is there or not
-    //in the place to add u can mention the number and in the list u can delete
-    //addition is separate and when u want to list u can delete in the format of a table
-    //thats how it can be made now
     const nextPath = (path) => {
         props.history.push(path)
     }
@@ -27,11 +23,21 @@ export default function Home(props) {
 
     return (
         <div style={backdrop}>
-            <h1>Save all your contacts here!</h1>
-            <button onClick={e => setType(false)}>New User</button>
-            <button onClick={e => setType(true)}>Existing User</button>
+             <Navbar bg="dark" variant="dark" expand="lg" sticky="top">
+                <Container>
+                    <Navbar.Brand><AiOutlineMail size={50} style={{paddingRight : '10px'}}/>Contact-o-mail</Navbar.Brand>
+                </Container>
+            </Navbar>
+            <br></br> 
+            <br></br>
+            <h2>The easiest way to save and organise your email contacts <AiTwotoneMail size={50}/></h2>
+  
+            <br></br>
+            Sign up if you are a <Button variant="outline-dark" onClick={e => setType(false)}>New User</Button>
+            <br></br>
+            Or login as an <Button variant="outline-dark" onClick={e => setType(true)}>Existing User</Button>
             <div>
-              {type === true ? <ExistingUser></ExistingUser> : <NewUser></NewUser>}
+            {type === true ? <ExistingUser></ExistingUser> : <NewUser></NewUser>}
             </div>
         </div>
     )

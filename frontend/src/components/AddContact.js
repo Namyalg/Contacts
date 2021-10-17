@@ -75,19 +75,9 @@ export default function AddContact() {
                     <Form.Control style={{width : '50%', margin : 'auto'}} size="lg" type="email" placeholder="Enter Email" value={email} onChange={e => setEmail(e.target.value)}/>
                     <br></br>
                     <br></br>
-                    <Button className="mb-2" onClick={addUserContact}>Add Contact</Button>
+                    <Button variant="outline-dark" className="mb-2" onClick={addUserContact}>Add Contact</Button>
                 </Form.Group>
             </Form>
-            
-            {/* First Name : <input value={firstname} onChange={e => setFirstName(e.target.value)} type="text"/>
-            
-            Last Name : <input value={lastname} onChange={e => setLastName(e.target.value)} type="text"/>
-            <br></br>
-            <br></br>
-            Email : <input value={email} onChange={e => setEmail(e.target.value)} type="text"/>
-            <br></br>
-            <br></br> */}
-            {/* <button onClick={addUserContact}>Add</button> */}
         </div>
     )
 }

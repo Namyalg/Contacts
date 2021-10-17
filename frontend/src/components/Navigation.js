@@ -25,7 +25,7 @@ export default function Navigation() {
                     </Nav>
                     </Navbar.Collapse>
                 </Container>
-                </Navbar>
+            </Navbar>
         </div>
     )
 }
