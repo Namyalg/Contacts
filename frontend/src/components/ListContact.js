@@ -54,6 +54,7 @@ export default function ListContact() {
     }
 
     const customStyles = {
+        
         content: {
           top: '40%',
           left: '50%',

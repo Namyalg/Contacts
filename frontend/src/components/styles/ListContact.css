@@ -10,3 +10,7 @@ th, td, tr, table {
 table {
     overflow: scroll;
 }
+
+.modal-backdrop {
+    background-color: green;
+}
