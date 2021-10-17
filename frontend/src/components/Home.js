@@ -7,7 +7,7 @@ import { Navbar, Container, Button} from 'react-bootstrap';
 import {AiTwotoneMail , AiOutlineMail} from 'react-icons/ai'
 
 export default function Home(props) {
-    var [type, setType] = useState(false);
+    var [type, setType] = useState(null);
     const nextPath = (path) => {
         props.history.push(path)
     }
@@ -31,13 +31,13 @@ export default function Home(props) {
             <br></br> 
             <br></br>
             <h2>The easiest way to save and organise your email contacts <AiTwotoneMail size={50}/></h2>
-  
             <br></br>
-            Sign up if you are a <Button variant="outline-dark" onClick={e => setType(false)}>New User</Button>
+            <span><h2 style={{marginLeft : '34%', float : 'left'}}>Sign up if you are a </h2><Button style={{marginRight : '34%'}} onClick={e => setType(false)} variant="outline-dark" size="lg">New User</Button></span>
             <br></br>
-            Or login as an <Button variant="outline-dark" onClick={e => setType(true)}>Existing User</Button>
-            <div>
-            {type === true ? <ExistingUser></ExistingUser> : <NewUser></NewUser>}
+            <br></br>
+            <span><h2 style={{marginLeft : '33%', float : 'left'}}>Or Login if you are an </h2><Button style={{marginRight : '32%'}} onClick={e => setType(true)} variant="outline-dark" size="lg">Existing User</Button></span>
+            <div style={{margin : '2%'}}>
+                {type === null ? <div></div> : type === true ? <ExistingUser></ExistingUser> : <NewUser></NewUser>}
             </div>
         </div>
     )
