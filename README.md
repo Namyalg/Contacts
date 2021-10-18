@@ -11,6 +11,10 @@ The steps to use the application are :
 ### Tech-stack
 <img src="./assets/mern.png"/>
 
+## Workflow
+
+<image src="./assets/process.gif?raw=true" width="650" height="400"/>
+
 ### Screenshots
 
 The landing page has an option to sign-up or login
@@ -25,6 +29,3 @@ The contact list page has options to modify or delete records
 
 <img src="./assets/list.PNG"/>
 
-### Workflow
-
-<image src="./assets/process.gif?raw=true" width="650" height="400"/>
