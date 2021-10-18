@@ -7,7 +7,7 @@ The steps to use the application are :
 - Add email contacts
 - View a list of email contacts, modify or delete them
 
-The <img src="./assets/mern.png" width="40" height="40"/> stack has been used to build this application
+The <img src="./assets/mern.png"/> stack has been used to build this application
 
 ### Screenshots
 
@@ -25,4 +25,4 @@ The contact list page has options to modify or delete records
 
 The entire process can be represented as 
 
-<video src="./assets/video.mp4"/>
+<image src="./assets/process.gif"/>
