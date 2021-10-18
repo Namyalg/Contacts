@@ -1,3 +1,8 @@
+/*
+    This page handles the case when the route does not match any of the existing routes 
+    created in the application
+*/
+
 import React from 'react'
 import background from '../assets/back.png'
 import "./styles/PageNotFound.css"

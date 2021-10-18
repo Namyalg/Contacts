@@ -1,3 +1,8 @@
+/* 
+    This file provides the layout for the page adding contacts, 
+    the details are sent as a POST request to /contact/add
+*/
+
 import React, { Component } from 'react'
 import { useState, useEffect, useHistory } from 'react'
 import axios from 'axios'
@@ -29,7 +34,6 @@ export default function AddContact() {
         else{
             var contact = {uname : uname, uemail : uemail, firstname : firstname, lastname : lastname, email : email}
             var URL = backend + "contact/add"
-            //axios.post("http://localhost:9001/contact/add", contact)
             axios.post(URL, contact)
             .then((response) => {
                 console.log(response);

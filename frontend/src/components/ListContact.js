@@ -1,3 +1,9 @@
+/*
+    This file provides the table layout for displaying the contacts
+    The contact list is got via a GET request to /contact/list
+    Each entry in the table has an option to modify (/contact/update) and delete (/contact/delete/)
+*/
+
 import React, { useEffect, useState } from 'react'
 import background from '../assets/back.png'
 import "./styles/ListContact.css"
@@ -20,10 +26,7 @@ export default function ListContact() {
     var [lastname, setLastName] = useState("")
     var [targetId, setTargetId] = useState(null)
 
-    function toggleModal() {
-      setIsOpen(!isOpen);
-    }
-
+    //performed on load of the page
     useEffect(() => {
         if(localStorage.getItem('uname')  === "" || localStorage.getItem('uemail')  === ""){
             window.location.replace("/")
@@ -31,7 +34,6 @@ export default function ListContact() {
         else{
             var URL = backend + "contact/list/" + localStorage.getItem('uname') + "/" + localStorage.getItem('uemail')
             axios.get(URL)
-            //axios.get("http://localhost:9001/contact/list/" + localStorage.getItem('uname') + "/" + localStorage.getItem('uemail'))
             .then((response) => {
                 setContact(response.data.contacts.contacts)
                 setObj(response.data.contacts)
@@ -61,6 +63,11 @@ export default function ListContact() {
         },
     };
 
+    
+    function toggleModal() {
+        setIsOpen(!isOpen);
+    }
+
     return (
        <div style={backdrop}>
            <Navigation/>
@@ -84,12 +91,11 @@ export default function ListContact() {
                                             <td>{item.firstname}</td>
                                             <td>{item.lastname}</td>
                                             <td>{item.email}</td>
-                                            {/* <td><Button variant="outline-dark" onClick={toggleModal}><FaEdit size={20}/></Button> */}
                                             <td><Button variant="outline-dark" onClick={() => {
-                                                //alert(item._id)
                                                 setTargetId(item._id)
                                                 toggleModal()
                                             }}><FaEdit size={20}/></Button>
+                                                {/* Modal to modify the contact */}
                                                 <Modal
                                                     style={customStyles}
                                                     isOpen={isOpen}
@@ -107,14 +113,12 @@ export default function ListContact() {
                                                             <Form.Control style={{width : '80%', margin : 'auto'}} size="lg" type="email" placeholder="Enter Email" value={email} onChange={e => setEmail(e.target.value)}/>
                                                             <br></br>
                                                             <Button variant="outline-dark" onClick={() => {
-                                                                //alert(targetId)
                                                                 var content = {objId : obj._id , contactId : targetId, firstname : firstname, lastname : lastname, email : email}
                                                                 if(firstname === "" || email === ""){
                                                                     alert("Please fill in first name and email")
                                                                 }
                                                                 else{
                                                                     var URL = backend + "contact/update"
-                                                                    //axios.put("http://localhost:9001/contact/update", content)
                                                                     axios.put(URL, content)
                                                                     .then((response) => {
                                                                         if(response.data.status == 1){
@@ -137,10 +141,8 @@ export default function ListContact() {
                                                 var dlt = {objId : obj._id , contactId : item._id}
                                                 var URL = backend + "contact/delete/" + obj._id + "/" + item._id
                                                 axios.delete(URL)
-                                                //axios.delete("http://localhost:9001/contact/delete/" + obj._id + "/" + item._id)
                                                 .then((response) => {
                                                     if(response.data.status == 1){
-                                                        //alert("Succesful delete")
                                                         window.location.reload()
                                                     }
                                                     else{

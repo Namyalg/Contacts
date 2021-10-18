@@ -1,3 +1,7 @@
+/* 
+    This file handles verification of an existing user at the route /user/login
+*/
+
 import React from 'react'
 import axios from 'axios'
 import { useState } from 'react'
@@ -5,11 +9,11 @@ import { useHistory } from 'react-router-dom';
 import {Form, Button, Card} from 'react-bootstrap'
 const backend = process.env.REACT_APP_BACKEND
 
-
 export default function ExistingUser(props) {
     var [email, setEmail] = useState("")
     var [name, setName] = useState("")
     const history = useHistory();
+    
     const redirectPath = () => {
         history.push("/add");
     }
@@ -22,7 +26,6 @@ export default function ExistingUser(props) {
             const newuser = { name : name, email : email };
             var URL = backend + "user/login"
             axios.post(URL, newuser)
-            //axios.post('http://localhost:9001/user/login', newuser)
             .then(response => {
                 console.log(response.data);
                 if(response.data.status === 1){
