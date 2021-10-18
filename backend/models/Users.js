@@ -1,3 +1,10 @@
+/* 
+    This file consists of the schema for each user
+    On creation a mongo db document with this schema is created
+    On addition of contacts the contacts array is populated
+
+*/
+
 const mongoose = require('mongoose')
 
 const Users = mongoose.Schema({

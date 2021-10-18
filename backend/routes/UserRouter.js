@@ -1,3 +1,8 @@
+/*
+    This route handles the user sign-up and login, on success returen status 1, else 0
+*/
+
+//imports and dependencies
 const express = require('express')
 const router = express.Router()
 const user = require('../models/Users') 

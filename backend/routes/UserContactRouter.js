@@ -1,9 +1,12 @@
+/*
+    This file is used to perform addition, updation and deletion of contacts
+    A status of 1 is returned on success else 0
+*/
+
 const { response } = require('express')
 const express = require('express')
 const router = express.Router()
 const user = require('../models/Users') 
-
-//its about which schema you are using
 
 router.get("/", async (req, res) => {
     try{
@@ -54,20 +57,20 @@ router.get("/list/:name/:email", async (req, res) => {
     }
 })
 
-router.delete("/delete/:objId/:contactId", async (req, res) => {
-    var objId = req.params.objId 
+router.delete("/delete/:documentId/:contactId", async (req, res) => {
+    var objId = req.params.documentId 
     var contactId = req.params.contactId 
     //pull is used to remove a document with a specified id
     user.updateOne({ _id : objId},
-    { $pull: { "contacts" : { _id : contactId } } }, (err) => {
-        if (err) {
-            res.status(404).json({ status : 0 });
+        { $pull: { "contacts" : { _id : contactId } } }, (err) => {
+            if (err) {
+                res.status(404).json({ status : 0 });
+            }
+            else{
+                res.status(200).json({status : 1})
+            }
         }
-        else{
-            res.status(200).json({status : 1})
-        }
-    }
-);
+    );
 })
 
 router.put("/update", async (req, res) => {
@@ -81,8 +84,6 @@ router.put("/update", async (req, res) => {
         { $set:  { 'contacts.$.firstname': fname, 'contacts.$.lastname': lname, 'contacts.$.email': email }},
         (err, result) => {
           if (err) {
-            // res.status(500)
-            console.log(err)
             res.json({ error: 'Unable to update contacts.', status : 0, message : err});
           } else {
             res.status(200)
