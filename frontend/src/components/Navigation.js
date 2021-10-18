@@ -1,3 +1,7 @@
+/* 
+    This file contains the Navigation bar used in AddContact.js and ListContact.js
+    Provides an option to add, list contacts or logout
+*/
 import React from 'react'
 import Navbar from 'react-bootstrap/Navbar'
 import "bootstrap/dist/css/bootstrap.css";
@@ -9,6 +13,7 @@ export default function Navigation() {
         <div>
             <Navbar bg="dark" variant="dark" expand="lg" sticky="top">
                 <Container>
+                    {/* Displaying name of user from local storage */}
                     <Navbar.Brand>Great to see you {localStorage.getItem('uname')}!</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">

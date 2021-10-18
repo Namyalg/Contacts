@@ -1,3 +1,8 @@
+/*
+    This file provides the landing page for the website
+    With an option to sign in as a new user or login as an existing user
+*/
+
 import React from 'react'
 import {useState} from 'react'
 import NewUser from './NewUser'
@@ -8,6 +13,7 @@ import {AiTwotoneMail , AiOutlineMail} from 'react-icons/ai'
 
 export default function Home(props) {
     var [type, setType] = useState(null);
+
     const backdrop = {
         backgroundImage: `url(${background})`,
         width:'100%',

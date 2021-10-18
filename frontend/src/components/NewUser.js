@@ -1,10 +1,14 @@
+/* 
+    This file handles the creation of a new user by making a POST request to 
+    the route /user/signin
+*/
+
 import React from 'react'
 import axios from 'axios'
 import { useState } from 'react'
 import { useHistory } from 'react-router-dom';
 import {Form, Button, Card} from 'react-bootstrap'
 const backend = process.env.REACT_APP_BACKEND
-
 
 export default function NewUser(props) {
     var [email, setEmail] = useState("")
@@ -19,7 +23,6 @@ export default function NewUser(props) {
             const newuser = { name : name, email : email };
             var URL = backend + "user/signin"
             axios.post(URL, newuser)
-            //axios.post('http://localhost:9001/user/signin', newuser)
             .then(response => {
                 if(response.data.status === 1){
                     alert("Succesful sign up! Go ahead and save your contacts!")
