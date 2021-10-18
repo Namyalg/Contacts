@@ -27,4 +27,4 @@ The contact list page has options to modify or delete records
 
 ### Workflow
 
-<image src="./assets/process.gif?raw=true" width="600" height="400"/>
+<image src="./assets/process.gif?raw=true" width="650" height="400"/>
