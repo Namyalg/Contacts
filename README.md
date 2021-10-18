@@ -25,6 +25,6 @@ The contact list page has options to modify or delete records
 
 <img src="./assets/list.PNG"/>
 
-The entire process can be represented as 
+### Workflow
 
 <image src="./assets/process.gif?raw=true" width="600" height="400"/>
