@@ -15,7 +15,7 @@ The steps to use the application are :
 
 The landing page has an option to sign-up or login
 
-<img src="./assets/landing.PNG"/>
+<img src="./assets/landing.PNG" width="650" height="500"/>
 
 On succesful login, the user is redirected to the add contacts page
 
