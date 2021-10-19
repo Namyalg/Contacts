@@ -29,3 +29,6 @@ The contact list page has options to modify or delete records
 
 <img src="./assets/list.PNG"/>
 
+### Future
+- Contact details can be expanded to including phone number, profile photo etc
+- Direct email from the contact list using mailing services
